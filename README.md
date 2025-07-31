@@ -25,7 +25,6 @@ Students must implement these algorithms in `search.py`, and test them using `se
 4. Submit your GitHub link with working implementation.
 
 ## 🔥 Notes
-- This version is cleaned from any Berkeley reference.
 - Designed exclusively for academic use at Ascencia University.
 
 Enjoy coding and good luck!
