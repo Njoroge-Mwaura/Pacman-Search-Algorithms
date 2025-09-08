@@ -4,7 +4,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 
-# Available options
+# Human-readable options shown in the UI
 LAYOUTS = [
     "Tiny Maze",
     "Medium Maze",
@@ -22,10 +22,28 @@ SEARCH_FUNCS = [
     "A Star Search",
 ]
 
-# Defaults
-DEFAULT_LAYOUT = " "
-DEFAULT_AGENT = " "
-DEFAULT_SEARCH = " "
+# Mappings from labels -> pacman IDs
+LAYOUT_LABEL_TO_ID = {
+    "Tiny Maze": "tinyMaze",
+    "Medium Maze": "mediumMaze",
+    "visual Showcase": "visualShowcase",
+    "visual Showcase Large": "visualShowcaseLarge",
+    "Halloween Showcase": "halloweenShowcase",
+}
+AGENT_LABEL_TO_ID = {
+    "Search Agent": "SearchAgent",
+}
+SEARCH_LABEL_TO_FN = {
+    "Breadth First Search": "breadthFirstSearch",
+    "Depth First Search": "depthFirstSearch",
+    "Uniform Cost Search": "uniformCostSearch",
+    "A Star Search": "aStarSearch",
+}
+
+# Defaults (use the first entries)
+DEFAULT_LAYOUT = LAYOUTS[1]
+DEFAULT_AGENT = AGENTS[0]
+DEFAULT_SEARCH = SEARCH_FUNCS[0]
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 PYTHON_BIN = sys.executable or "python3"
@@ -129,9 +147,13 @@ class Launcher(tk.Tk):
         start_btn.pack(fill="x")
 
     def on_start(self):
-        layout = self.layout_var.get()
-        agent = self.agent_var.get()
-        fn = self.fn_var.get()
+        # Convert friendly labels to engine IDs
+        layout_label = self.layout_var.get()
+        agent_label = self.agent_var.get()
+        fn_label = self.fn_var.get()
+        layout = LAYOUT_LABEL_TO_ID.get(layout_label, layout_label)
+        agent = AGENT_LABEL_TO_ID.get(agent_label, agent_label)
+        fn = SEARCH_LABEL_TO_FN.get(fn_label, fn_label)
         run_game(layout, agent, fn)
 
 
