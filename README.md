@@ -26,11 +26,11 @@ python3 pacman.py -l mediumMaze -p SearchAgent -a fn=astar,prob=PositionSearchPr
 ```
 
 ## Included Layouts
-- tinyMaze
-- mediumMaze
-- visualShowcase
-- visualShowcaseLarge
-- halloweenShowcase (many walls, chambers, capsules; works best at smaller zoom such as `-z 0.8`)
+- Tiny Maze
+- Medium Maze
+- Visual Showcase
+- visual Showcase Large
+- Halloween Showcase (many walls, chambers, capsules; works best at smaller zoom such as `-z 0.8`)
 
 Tip: If the board is larger than your screen, reduce zoom: `-z 0.8 --frameTime 0.08`.
 
